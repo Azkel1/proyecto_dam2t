@@ -1,0 +1,29 @@
+﻿<Window x:Class="ProyectoFinal_DI_AlexisSantana.view.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="VR World Manager" Height="620" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Archivo">
+                <MenuItem Header="Información" Command="{Binding ButtonInfo}"/>
+                <MenuItem Header="Salir" Command="{Binding ButtonSalir}"/>
+            </MenuItem>
+            <MenuItem Header="Tabla"> <!-- Cambiar a lista de items seleccionables -->
+                <MenuItem Header="Inventario" Command="{Binding ButtonInventario}"/>
+                <MenuItem Header="Citas para Demos" Command="{Binding ButtonCitas}"/>
+            </MenuItem>
+            <MenuItem Header="Informes" Command="{Binding ButtonInformes}"/>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem Name="statusBar" Content="Bienvenido a VRWorld Manager 1.0. Elija una de las opciones del menú superior."/>
+        </StatusBar>
+        <Frame Name="dataFrame" NavigationUIVisibility="Hidden">
+            <Frame.Background>
+                <ImageBrush ImageSource="/ProyectoFinal_DI_AlexisSantana;component/data/media/vrworld_menu.png"/>
+            </Frame.Background>
+        </Frame>
+    </DockPanel>
+</Window>

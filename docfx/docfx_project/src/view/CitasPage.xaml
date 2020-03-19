@@ -1,0 +1,78 @@
+﻿<Page x:Class="ProyectoFinal_DI_AlexisSantana.view.CitasPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+      xmlns:conv="clr-namespace:ProyectoFinal_DI_AlexisSantana.model"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CitasPage">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="datosCitas" Source="{Binding}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Id" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <conv:Convertidor x:Key="ConvertidorIDtoName"/>
+    </Page.Resources>
+    <DockPanel>
+        <Expander Name="CitasExpander" DockPanel.Dock="Right" ExpandDirection="Left">
+            <Expander.Header>
+                <TextBlock Text="Añadir una cita">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <StackPanel Margin="5" Name="CitasPanel">
+                <StackPanel Name="AddPanel">
+                    <!-- Añadir estilo, controlar tipo (solo numeros, etc.) y no permitir que se expandan horizontalmente -->
+                    <TextBlock Text="Citas: Añadir cita" Style="{StaticResource expanderTitle}"/>
+                    <TextBlock Text="ID" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Cita_Cita_ID"/>
+                    <TextBlock Text="Nombre Cliente" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Cita_Cliente_Name"/>
+                    <TextBlock Text="Fecha" Style="{StaticResource expanderTag}"/>
+                    <DatePicker Name="Cita_Date"/>
+                    <TextBlock Text="Producto" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Cita_Product_ID"/>
+                    <Button Name="Cita_Add_Button" Content="Añadir" Margin="0 5 0 0" Click="AddCita" Style="{StaticResource expanderButtonOK}"/>
+                </StackPanel>
+                <StackPanel Name="EditPanel" Margin = "0 15 0 0" Visibility="Hidden">
+                    <!-- Añadir estilo, controlar tipo (solo numeros, etc.) y no permitir que se expandan horizontalmente -->
+                    <TextBlock Text="Citas: Editar cita" Style="{StaticResource expanderTitle}"/>
+                    <TextBlock Text="ID" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Cita_Edit_ID" IsEnabled="False"/>
+                    <TextBlock Text="Nombre Cliente" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Cita_Edit_Cliente_Name"/>
+                    <TextBlock Text="Fecha" Style="{StaticResource expanderTag}"/>
+                    <DatePicker Name="Cita_Edit_Date"/>
+                    <!-- Cambiar a DatePicker -->
+                    <TextBlock Text="Producto" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Cita_Edit_Product_ID"/>
+                    <Button Name="Cita_Edit_Button" Content="Guardar" Margin="0 5 0 0" Click="EditCita" Style="{StaticResource expanderButtonOK}"/>
+                </StackPanel>
+                <StackPanel Name="DeletePanel" Margin = "0 15 0 0" Visibility="Hidden">
+                    <TextBlock Text="Citas: Eliminar cita" Style="{StaticResource expanderTitle}"/>
+                    <Button Name="Cita_Delete_Button" Content="Eliminar" Margin="0 5 0 0" Click="DeleteCita" Style="{StaticResource expanderButtonIMP}"/>
+                </StackPanel>
+            </StackPanel>
+        </Expander>
+        <DataGrid Name="CitasDataGrid" ItemsSource="{Binding Source={StaticResource datosCitas}}" Style="{StaticResource dataGrid}" AutoGenerateColumns="False" MouseDoubleClick="RowClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="NOMBRE CLIENTE" Binding="{Binding NombreCliente}"/>
+                <DataGridTextColumn Header="PRODUCTO" Binding="{Binding Producto}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="ToolTip" Value="{Binding Producto, Converter={StaticResource ConvertidorIDtoName}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="FECHA" Binding="{Binding Fecha}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Page>

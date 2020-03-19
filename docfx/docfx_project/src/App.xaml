@@ -1,0 +1,65 @@
+﻿<Application x:Class="ProyectoFinal_DI_AlexisSantana.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="view/MainWindow.xaml">
+    <Application.Resources>
+        <!--DataGrid-->
+        <Style x:Key="dataGrid" TargetType="DataGrid">
+            <Setter Property="CanUserSortColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+
+        <!--Expander-->
+        <Style TargetType="Expander">
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!--Expander Title-->
+        <Style x:Key="expanderTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <!--Expander Tag-->
+        <Style x:Key="expanderTag" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0 3 0 0"/>
+        </Style>
+
+        <!--Expander Button Base-->
+        <Style x:Key="expanderButton" TargetType="Button">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="1" Padding="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--Expander Button OK-->
+        <Style x:Key="expanderButtonOK" TargetType="Button" BasedOn="{StaticResource expanderButton}">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="#FF008051"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF016C45"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Expander Button Important-->
+        <Style x:Key="expanderButtonIMP" TargetType="Button" BasedOn="{StaticResource expanderButton}">
+            <Setter Property="Background" Value="#FFFF3A3A"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFD43232"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>
