@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/media/vrworld_icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/media/icons8-bell-100.png")]
 
 

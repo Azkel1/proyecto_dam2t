@@ -96,3 +96,4 @@ F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\Pr
 F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\ProyectoFinal_DI_AlexisSantana.csproj.CopyComplete
 F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\ProyectoFinal_DI_AlexisSantana.exe
 F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\ProyectoFinal_DI_AlexisSantana.pdb
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Release\Notifications.Wpf.dll

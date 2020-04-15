@@ -231,6 +231,7 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             return true;
         }
 
+        //Comprueba si existe un producto cuyo id sea el pasado por parámetro
         public bool SearchInv(int? id)
         {
             LoadConnectionData();
@@ -254,6 +255,39 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             }
             CloseConnection();
             return false;
+        }
+
+        //Similar al método anterior, pero este devuelve el objeto del producto encontrado
+        public Producto GetProd(int? id)
+        {
+            LoadConnectionData();
+            Producto p = null;
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "SELECT * FROM inventario WHERE id = ?id";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", id);
+                    var reader = comando.ExecuteReader();
+                    
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        p = new Producto(Convert.ToInt32(reader["id"]), Convert.ToString(reader["nombre_prod"]), Convert.ToString(reader["descripcion"]), 
+                            Convert.ToInt32(reader["cantidad"]), Convert.ToDouble(reader["precio"]));
+                        reader.Close();
+                        CloseConnection();
+                        return p;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    throw new Exception("ErrorLeerInventario" + ex.Message);
+                }
+            }
+            CloseConnection();
+            return p;
         }
         #endregion 
 
@@ -359,6 +393,42 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
 
             CloseConnection();
             return true;
+        }
+
+        public bool FilterCita(string param, string col)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    switch (col)
+                    {
+                        case "id":
+                            query = "SELECT * FROM citas_demos WHERE id = ?id";
+                            break;
+
+                        default:
+                            query = "SELECT * FROM citas_demos";
+                            break;
+                    }
+
+                    
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", param);
+                    if (comando.ExecuteReader().HasRows)
+                    {
+                        CloseConnection();
+                        return true;
+                    }
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+            CloseConnection();
+            return false;
         }
         #endregion
     }

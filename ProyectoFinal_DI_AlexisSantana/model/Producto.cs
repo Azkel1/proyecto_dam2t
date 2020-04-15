@@ -1,6 +1,8 @@
-﻿namespace ProyectoFinal_DI_AlexisSantana.model
+﻿using System;
+
+namespace ProyectoFinal_DI_AlexisSantana.model
 {
-    public class Producto : NotifyBase
+    public class Producto : NotifyBase, ICloneable
     {
         #region Atributos
         private string nombre, descripcion;
@@ -76,7 +78,7 @@
         #endregion
 
         #region Constructores
-        public Producto() { }
+        public Producto() {}
 
         /// <summary>
         /// Crea un nuevo producto solo con un ID.
@@ -102,6 +104,14 @@
             this.descripcion = descripcion;
             this.cantidad = cantidad;
             this.precio = precio;
+        }
+        #endregion
+
+        #region Metodos
+        /*Interfaz ICloneable, necesario para modificar*/
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
         #endregion
     }

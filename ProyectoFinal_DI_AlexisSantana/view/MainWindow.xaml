@@ -7,15 +7,26 @@
         Title="VR World Manager" Height="620" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
             <MenuItem Header="Archivo">
                 <MenuItem Header="Información" Command="{Binding ButtonInfo}"/>
                 <MenuItem Header="Salir" Command="{Binding ButtonSalir}"/>
             </MenuItem>
-            <MenuItem Header="Tabla"> <!-- Cambiar a lista de items seleccionables -->
+            <MenuItem Header="Tabla">
+                <!-- Cambiar a lista de items seleccionables -->
                 <MenuItem Header="Inventario" Command="{Binding ButtonInventario}"/>
                 <MenuItem Header="Citas para Demos" Command="{Binding ButtonCitas}"/>
             </MenuItem>
             <MenuItem Header="Informes" Command="{Binding ButtonInformes}"/>
+            <MenuItem Name ="Notificaciones" Padding="0" FontSize="14" HorizontalAlignment="Right">
+                <MenuItem.Icon>
+                    <Image Source="/ProyectoFinal_DI_AlexisSantana;component/data/media/icons8-bell-100.png" Margin="-8"/>
+                </MenuItem.Icon>
+            </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem Name="statusBar" Content="Bienvenido a VRWorld Manager 1.0. Elija una de las opciones del menú superior."/>

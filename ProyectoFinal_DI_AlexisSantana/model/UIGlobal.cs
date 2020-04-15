@@ -8,5 +8,7 @@ namespace ProyectoFinal_DI_AlexisSantana.model
         public static InventarioPage InventarioPage { get; set; }
         public static CitasPage CitasPage { get; set; }
         public static InformesPage InformesPage { get; set; }
+        public static InfoCitaWindow InfoCitaWindow { get; set; }
+        public static InfoProductoWindow InfoProductoWindow { get; set; }
     }
 }

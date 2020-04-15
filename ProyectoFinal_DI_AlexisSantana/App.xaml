@@ -8,7 +8,7 @@
             <Setter Property="CanUserSortColumns" Value="False"/>
             <Setter Property="IsReadOnly" Value="True"/>
         </Style>
-
+        
         <!--Expander-->
         <Style TargetType="Expander">
             <Setter Property="Background" Value="White"/>
@@ -60,6 +60,19 @@
                     <Setter Property="Background" Value="#FFD43232"/>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+
+        <!-- Info Windows -->
+        
+        <!-- Grid Info -->
+        <Style x:Key="gridInfo" TargetType="Grid">
+            <Setter Property="Margin" Value="15"/>
+        </Style>
+
+        <!-- Label Info -->
+        <Style x:Key="labelInfo" TargetType="Label">
+            <Setter Property="FontWeight" Value="500"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
     </Application.Resources>
 </Application>

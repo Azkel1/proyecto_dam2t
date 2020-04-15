@@ -8,7 +8,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
     {
         public ViewModel() { }
 
-        private ICommand buttonInventario, buttonCitas, buttonInfo, buttonSalir, buttonInformes;
+        private ICommand buttonInventario, buttonCitas, buttonInfo, buttonSalir, buttonInformes, buttonInfoCita;
 
         #region Comandos
         public ICommand ButtonInventario
@@ -70,6 +70,18 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
                 return buttonInformes;
             }
         }
+
+        public ICommand ButtonInfoCita
+        {
+            get
+            {
+                if (buttonInfoCita == null)
+                {
+                    buttonInfoCita = new CommandPages(param => this.MostrarInfoCita((Cita)param));
+                }
+                return buttonInfoCita;
+            }
+        }
         #endregion
 
         #region Metodos
@@ -102,9 +114,23 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
             UIGlobal.MainWindow.ShowMessage("Aplicación para la gestión del inventario y de las citas con clientes de VRWorld.", "info");
         }
 
+        public void MostrarInfoCita(Cita c)
+        {
+            if (c == null)
+            {
+                UIGlobal.MainWindow.ShowMessage("Error al obtener la información de la cita.", "error");
+            }
+            else
+            {
+                InfoCitaWindow ventana = new InfoCitaWindow(c);
+                ventana.ShowDialog();
+            }
+        }
+
         private void Salir()
         {
             UIGlobal.MainWindow.Close();
+            System.Windows.Application.Current.Shutdown();
         }
         #endregion
     }

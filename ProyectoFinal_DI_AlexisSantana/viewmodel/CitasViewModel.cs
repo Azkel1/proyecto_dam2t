@@ -1,13 +1,17 @@
 ﻿using ProyectoFinal_DI_AlexisSantana.data.DB;
 using ProyectoFinal_DI_AlexisSantana.model;
+using ProyectoFinal_DI_AlexisSantana.view;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace ProyectoFinal_DI_AlexisSantana.viewmodel 
 {
     public class CitasViewModel : ObservableCollection<Cita>
     {
         private ObservableCollection<Cita> listaCitas;
+        private ICommand buttonVerDetalles; 
 
         public ObservableCollection<Cita> ListaCitas
         {
@@ -23,9 +27,15 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
 
             if (DBConnection.Instance.itemsCitas != null)
             {
+                UIGlobal.MainWindow.EmptyNotifMenu();
                 foreach (Cita i in DBConnection.Instance.itemsCitas)
                 {
                     listaCitas.Add(i);
+                    Cita i_notif = new Cita(i.Id, i.NombreCliente, DBConnection.Instance.GetProd(i.Producto), i.Fecha);
+                    if (i_notif.Fecha.Date == (DateTime.Today.Date.AddDays(1)))
+                    {
+                        UIGlobal.MainWindow.ShowNotif("Citas", i_notif, "info");
+                    }
                 }
             }
         }

@@ -1,0 +1,27 @@
+﻿<Window x:Class="ProyectoFinal_DI_AlexisSantana.view.InfoProductoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Información del producto" Height="450" Width="375">
+    <Grid Style="{StaticResource gridInfo}">
+        <DockPanel>
+            <Label DockPanel.Dock="Top" Content="ID del producto:" Style="{StaticResource labelInfo}"/>
+            <TextBlock DockPanel.Dock="Top" Name="id_prod"/>
+            <Label DockPanel.Dock="Top" Content="Nombre del producto:" Style="{StaticResource labelInfo}"/>
+            <TextBlock DockPanel.Dock="Top" Name="nombre_prod"/>
+            <Label DockPanel.Dock="Top" Content="Descripción:" Style="{StaticResource labelInfo}"/>
+            <TextBlock DockPanel.Dock="Top" Name="desc_prod"/>
+            <Label DockPanel.Dock="Top" Content="Fecha de salida:" Style="{StaticResource labelInfo}"/>
+            <TextBlock DockPanel.Dock="Top" Name="fecha_salida_prod"/>
+            <Label DockPanel.Dock="Top" Content="Cantidad disponible en stock:" Style="{StaticResource labelInfo}"/>
+            <TextBlock DockPanel.Dock="Top" Name="cant_prod"/>
+            <Label DockPanel.Dock="Top" Content="Precio:" Style="{StaticResource labelInfo}"/>
+            <TextBlock DockPanel.Dock="Top" Name="precio_prod"/>
+            <!-- TODO: Pensar como añadir la imagen de forma que se pueda elegir la imagen
+            <Label DockPanel.Dock="Top" Content="Imagen:" Style="{StaticResource labelInfo}"/>
+            <Image DockPanel.Dock="Top" Name="imagen_prod"/>-->
+        </DockPanel>
+    </Grid>
+</Window>
