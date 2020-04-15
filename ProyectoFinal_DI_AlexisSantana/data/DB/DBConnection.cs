@@ -16,6 +16,7 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
         private string query;
         public Producto[] itemsInventario;
         public Cita[] itemsCitas;
+        public Cliente[] itemsClientes;
 
         private MySqlConnection connection;
         private string server;
@@ -56,6 +57,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         case "citas":
                             ReadCitas();
                             break;
+                        case "clientes":
+                            ReadClientes();
+                            break;
                     }
                 }
                 CloseConnection();
@@ -78,7 +82,7 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             port = "3311";
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" +
                                 "PORT=" + port + ";" + "UID=" + uid + ";" + "PWD=" + password +
-                                ";Convert Zero Datetime=true;CHARSET=utf8";
+                                ";Convert Zero Datetime=true;CHARSET=utf8;Pooling=false";
             connection = new MySqlConnection(connectionString);
         }
 
@@ -429,6 +433,111 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             }
             CloseConnection();
             return false;
+        }
+        #endregion
+
+        #region Métodos Clientes
+        public void ReadClientes()
+        {
+            try
+            {
+                query = "SELECT * FROM clientes";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                int i = 0;
+
+                dt = new DataTable();
+                adapter.Fill(dt);
+                intAffected = dt.Rows.Count;
+
+                if (intAffected > 0)
+                    itemsClientes = new Cliente[intAffected];
+                else
+                    itemsClientes = new Cliente[0];
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    itemsClientes[i] = new Cliente(Convert.ToInt32(row["id"]), Convert.ToString(row["nombre"]),
+                        Convert.ToString(row["direccion"]), Convert.ToString(row["telefono"]));
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ErrorLeerClientes" + ex.Message);
+            }
+        }
+
+        public bool InsertCliente(Cliente c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "INSERT INTO clientes VALUES(?id, ?nombre, ?direccion, ?telefono)";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", c.Id);
+                    comando.Parameters.AddWithValue("?nombre", c.NombreCliente);
+                    comando.Parameters.AddWithValue("?direccion", c.Direccion);
+                    comando.Parameters.AddWithValue("?telefono", c.Telefono);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    UIGlobal.MainWindow.ShowMessage("Ya existe un cliente con ese ID", "error");
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool EditCliente(Cliente c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "UPDATE clientes SET nombre = ?nombre, direccion = ?direccion, telefono = ?telefono WHERE id = ?id";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", c.Id);
+                    comando.Parameters.AddWithValue("?nombre", c.NombreCliente);
+                    comando.Parameters.AddWithValue("?direccion", c.Direccion);
+                    comando.Parameters.AddWithValue("?telefono", c.Telefono);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool DeleteCliente(Cliente c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "DELETE FROM clientes WHERE id = ?id";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", c.Id);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
         }
         #endregion
     }

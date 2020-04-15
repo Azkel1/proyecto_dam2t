@@ -20,6 +20,7 @@
                 <!-- Cambiar a lista de items seleccionables -->
                 <MenuItem Header="Inventario" Command="{Binding ButtonInventario}"/>
                 <MenuItem Header="Citas para Demos" Command="{Binding ButtonCitas}"/>
+                <MenuItem Header="Clientes" Command="{Binding ButtonClientes}"/>
             </MenuItem>
             <MenuItem Header="Informes" Command="{Binding ButtonInformes}"/>
             <MenuItem Name ="Notificaciones" Padding="0" FontSize="14" HorizontalAlignment="Right">

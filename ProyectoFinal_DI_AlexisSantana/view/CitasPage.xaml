@@ -15,7 +15,7 @@
                 <scm:SortDescription PropertyName="Id" Direction="Ascending"/>
             </CollectionViewSource.SortDescriptions>
         </CollectionViewSource>
-        <conv:Convertidor x:Key="ConvertidorIDtoName"/>
+        <conv:ConvertidorProductos x:Key="ConvertidorIDtoProductName"/>
     </Page.Resources>
     <DockPanel>
         <Expander Name="CitasExpander" DockPanel.Dock="Right" ExpandDirection="Left">
@@ -67,7 +67,7 @@
                 <DataGridTextColumn Header="PRODUCTO" Binding="{Binding Producto}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="ToolTip" Value="{Binding Producto, Converter={StaticResource ConvertidorIDtoName}}"/>
+                            <Setter Property="ToolTip" Value="{Binding Producto, Converter={StaticResource ConvertidorIDtoProductName}}"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>

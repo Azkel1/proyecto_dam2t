@@ -8,7 +8,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
     {
         public ViewModel() { }
 
-        private ICommand buttonInventario, buttonCitas, buttonInfo, buttonSalir, buttonInformes, buttonInfoCita;
+        private ICommand buttonInventario, buttonCitas, buttonClientes, buttonInfo, buttonSalir, buttonInformes, buttonInfoCita;
 
         #region Comandos
         public ICommand ButtonInventario
@@ -32,6 +32,18 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
                     buttonCitas = new CommandPages(param => this.SwitchToCitas(), null);
                 }
                 return buttonCitas;
+            }
+        }
+
+        public ICommand ButtonClientes
+        {
+            get
+            {
+                if (buttonClientes == null)
+                {
+                    buttonClientes = new CommandPages(param => this.SwitchToClientes(), null);
+                }
+                return buttonClientes;
             }
         }
 
@@ -99,6 +111,14 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
             UIGlobal.MainWindow.dataFrame.Navigate(citasPage);
 
             UIGlobal.MainWindow.statusBar.Content = "Items de Citas";
+        }
+
+        private void SwitchToClientes()
+        {
+            ClientesPage clientesPage = new ClientesPage();
+            UIGlobal.MainWindow.dataFrame.Navigate(clientesPage);
+
+            UIGlobal.MainWindow.statusBar.Content = "Items de Clientes";
         }
 
         private void SwitchToInformes()

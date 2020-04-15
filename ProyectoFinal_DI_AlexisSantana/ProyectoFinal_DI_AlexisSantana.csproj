@@ -80,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="view\ClientesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="view\CitasPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,17 +119,22 @@
       <DependentUpon>CitasPorProducto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="model\Cliente.cs" />
     <Compile Include="model\Cita.cs" />
-    <Compile Include="model\Convertidor.cs" />
+    <Compile Include="model\ConvertidorProductos.cs" />
     <Compile Include="model\Producto.cs" />
     <Compile Include="model\NotifyBase.cs" />
     <Compile Include="model\UIGlobal.cs" />
     <Compile Include="pruebas\TestsInventario.cs" />
+    <Compile Include="viewmodel\ClientesViewModel.cs" />
     <Compile Include="viewmodel\CitasViewModel.cs" />
     <Compile Include="viewmodel\CommandBase.cs" />
     <Compile Include="viewmodel\CommandPages.cs" />
     <Compile Include="viewmodel\ProductoViewModel.cs" />
     <Compile Include="viewmodel\ViewModel.cs" />
+    <Compile Include="view\ClientesPage.xaml.cs">
+      <DependentUpon>ClientesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\CitasPage.xaml.cs">
       <DependentUpon>CitasPage.xaml</DependentUpon>
     </Compile>

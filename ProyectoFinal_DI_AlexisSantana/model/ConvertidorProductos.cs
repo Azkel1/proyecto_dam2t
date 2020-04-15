@@ -6,7 +6,7 @@ using System.Windows.Data;
 
 namespace ProyectoFinal_DI_AlexisSantana.model
 {
-    class Convertidor : IValueConverter
+    class ConvertidorProductos : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

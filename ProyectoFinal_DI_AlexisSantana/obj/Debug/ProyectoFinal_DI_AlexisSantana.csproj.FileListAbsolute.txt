@@ -95,9 +95,10 @@ F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\Pr
 F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\InformesPage.baml
 F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\InformesPage.g.cs
 F:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\GeneratedInternalTypeHelper.g.cs
-G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\ProyectoFinal_DI_AlexisSantana.csprojAssemblyReference.cache
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Debug\Notifications.Wpf.dll
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\InfoCitaWindow.g.cs
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\InfoCitaWindow.baml
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\InfoProductoWindow.g.cs
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\InfoProductoWindow.baml
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\ClientesPage.g.cs
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\view\ClientesPage.baml
