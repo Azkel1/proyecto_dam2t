@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/media/favicon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dbconfig.json")]
 
 

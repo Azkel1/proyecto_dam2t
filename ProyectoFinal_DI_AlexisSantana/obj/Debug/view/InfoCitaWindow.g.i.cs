@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 using ProyectoFinal_DI_AlexisSantana.view;
+using RootLibrary.WPF.Localization;
 using System;
 using System.Diagnostics;
 using System.Windows;

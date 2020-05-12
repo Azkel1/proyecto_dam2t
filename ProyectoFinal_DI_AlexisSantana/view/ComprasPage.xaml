@@ -1,0 +1,110 @@
+﻿<Page x:Name="page" x:Class="ProyectoFinal_DI_AlexisSantana.view.ComprasPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+      xmlns:vm="clr-namespace:ProyectoFinal_DI_AlexisSantana.viewmodel"
+      xmlns:conv="clr-namespace:ProyectoFinal_DI_AlexisSantana.model"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ComprasPage">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="datosCompras" Source="{Binding compras}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Id" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <CollectionViewSource x:Key="datosComprasLineas" Source="{Binding lineas.FilteredLineas}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Producto" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <conv:ConvertidorClientes x:Key="ConvertidorIDtoClientName"/>
+        <conv:ConvertidorProductos x:Key="ConvertidorIDtoProductName"/>
+    </Page.Resources>
+    <DockPanel>
+        <Expander Name="ComprasExpander" DockPanel.Dock="Right" ExpandDirection="Left">
+            <Expander.Header>
+                <TextBlock Text="Añadir una compra">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <StackPanel Margin="5" Name="ComprasPanel">
+                <StackPanel Name="AddPanel">
+                    <TextBlock Text="Compras: Añadir compra" Style="{StaticResource expanderTitle}"/>
+                    <TextBlock Text="ID" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Compra_ID"/>
+                    <TextBlock Text="Cliente" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Compra_Cliente_ID"/>
+                    <TextBlock Text="Fecha" Style="{StaticResource expanderTag}" />
+                    <DatePicker Name="Compra_Fecha"/>
+                    <Button Name="Compra_Add_Button" Content="Añadir" Margin="0 5 0 0" Click="AddCompra" Style="{StaticResource expanderButtonOK}"/>
+                </StackPanel>
+                <StackPanel Name="EditPanel" Margin = "0 15 0 0" Visibility="Hidden">
+                    <TextBlock Text="Compras: Editar compra" Style="{StaticResource expanderTitle}"/>
+                    <TextBlock Text="ID" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Compra_Edit_ID" IsEnabled="False"/>
+                    <TextBlock Text="Nombre Cliente" Style="{StaticResource expanderTag}"/>
+                    <TextBox Name="Compra_Edit_Cliente"/>
+                    <TextBlock Text="Fecha" Style="{StaticResource expanderTag}"/>
+                    <DatePicker Name="Compra_Edit_Fecha"/>
+                    <Button Name="Compra_Edit_Button" Content="Guardar" Margin="0 5 0 0" Click="EditCompra" Style="{StaticResource expanderButtonOK}"/>
+                </StackPanel>
+                <StackPanel Name="DeletePanel" Margin = "0 15 0 0" Visibility="Hidden">
+                    <TextBlock Text="Compras: Eliminar compra" Style="{StaticResource expanderTitle}"/>
+                    <Button Name="Compra_Delete_Button" Content="Eliminar" Margin="0 5 0 0" Click="DeleteCompra" Style="{StaticResource expanderButtonIMP}"/>
+                </StackPanel>
+            </StackPanel>
+        </Expander>
+        <DataGrid Name="ComprasDataGrid" ItemsSource="{Binding Source={StaticResource datosCompras}}" Style="{StaticResource dataGrid}" SelectedValue="{Binding lineas.Filtro, Mode=TwoWay}"
+                  IsSynchronizedWithCurrentItem="False" AutoGenerateColumns="False" MouseDoubleClick="RowDoubleClick" DataGridCell.Selected="RowClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="CLIENTE" Binding="{Binding Cliente}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="ToolTip" Value="{Binding Cliente, Converter={StaticResource ConvertidorIDtoClientName}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="PRODUCTOS" Binding="{Binding Productos}"/>
+                <DataGridTextColumn Header="FECHA" Binding="{Binding Fecha}"/>
+                <DataGridTextColumn Header="TOTAL" Binding="{Binding Total}"/>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid Name="ComprasLineasDataGrid" ItemsSource="{Binding DataContext.lineas.FilteredLineas, ElementName=page}" 
+                                  Style="{StaticResource dataGrid}" AutoGenerateColumns="False" IsReadOnly="False" RowEditEnding="RowEditEnding">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Compra" Binding="{Binding Compra, UpdateSourceTrigger=LostFocus}"/>
+                            <DataGridTextColumn x:Name="CompraLinea_Producto" Header="Producto" Binding="{Binding Producto, UpdateSourceTrigger=LostFocus}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="ToolTip" Value="{Binding Producto, Converter={StaticResource ConvertidorIDtoProductName}}"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn x:Name="CompraLinea_Cantidad" Header="Cantidad" Binding="{Binding Cantidad, UpdateSourceTrigger=LostFocus}"/>
+                            <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" IsReadOnly="True"/>
+                            <DataGridTemplateColumn Header="DETALLES">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding ButtonEliminarLinea}" CommandParameter="{Binding ElementName=ComprasLineasDataGrid, Path=SelectedItem}">Eliminar
+                                            <Button.DataContext>
+                                                <vm:ComprasLineasViewModel/>
+                                            </Button.DataContext>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </DockPanel>
+</Page>

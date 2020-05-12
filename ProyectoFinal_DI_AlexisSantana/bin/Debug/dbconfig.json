@@ -1,0 +1,7 @@
+{
+  "server": "localhost",
+  "database": "vrworld",
+  "uid": "vrworld",
+  "password": "vrworld",
+  "port": "3311"
+}

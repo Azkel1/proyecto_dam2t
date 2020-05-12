@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace ProyectoFinal_DI_AlexisSantana.model
 {

@@ -17,13 +17,11 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
         public Producto[] itemsInventario;
         public Cita[] itemsCitas;
         public Cliente[] itemsClientes;
+        public Compra[] itemsCompras;
+        public CompraLinea[] itemsComprasLineas;
 
         private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
-        private string port;
+        private string server, database, uid, password, port;
         private string connectionString;
 
         private DBConnection() { }
@@ -60,6 +58,12 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         case "clientes":
                             ReadClientes();
                             break;
+                        case "compras":
+                            ReadCompras();
+                            break;
+                        case "compras_lineas":
+                            ReadComprasLineas();
+                            break;
                     }
                 }
                 CloseConnection();
@@ -82,7 +86,7 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             port = "3311";
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" +
                                 "PORT=" + port + ";" + "UID=" + uid + ";" + "PWD=" + password +
-                                ";Convert Zero Datetime=true;CHARSET=utf8;Pooling=false";
+                                ";Convert Zero Datetime=true;CHARSET=utf8";
             connection = new MySqlConnection(connectionString);
         }
 
@@ -518,6 +522,32 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             return true;
         }
 
+        //Comprueba si existe un producto cuyo id sea el pasado por parámetro
+        public bool SearchCli(int? id)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "SELECT * FROM clientes WHERE id = ?id";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", id);
+                    if (comando.ExecuteReader().HasRows)
+                    {
+                        CloseConnection();
+                        return true;
+                    }
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+            CloseConnection();
+            return false;
+        }
+
         public bool DeleteCliente(Cliente c)
         {
             LoadConnectionData();
@@ -538,6 +568,239 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
 
             CloseConnection();
             return true;
+        }
+        #endregion
+
+        #region Métodos Compras
+        public void ReadCompras()
+        {
+            try
+            {
+                query = "SELECT * FROM compras";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                int i = 0;
+
+                dt = new DataTable();
+                adapter.Fill(dt);
+                intAffected = dt.Rows.Count;
+
+                if (intAffected > 0)
+                    itemsCompras = new Compra[intAffected];
+                else
+                    itemsCompras = new Compra[0];
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    itemsCompras[i] = new Compra(Convert.ToInt32(row["id"]), Convert.ToInt32(row["cliente"]), Convert.ToInt32(row["productos"]),
+                        Convert.ToDateTime(row["fecha"]), (float)Convert.ToDouble(row["total"]));
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ErrorLeerCompras" + ex.Message);
+            }
+        }
+
+        public bool InsertCompra(Compra c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "INSERT INTO compras VALUES(?id, ?cliente, null, ?fecha, null)";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", c.Id);
+                    comando.Parameters.AddWithValue("?cliente", c.Cliente);
+                    comando.Parameters.AddWithValue("?fecha", Convert.ToDateTime(c.Fecha));
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    UIGlobal.MainWindow.ShowMessage("Ya existe una compra con ese ID", "error");
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool EditCompra(Compra c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "UPDATE compras SET cliente = ?cliente, fecha = ?fecha WHERE id = ?id";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", c.Id);
+                    comando.Parameters.AddWithValue("?cliente", c.Cliente);
+                    comando.Parameters.AddWithValue("?fecha", Convert.ToDateTime(c.Fecha));
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool DeleteCompra(Compra c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "DELETE FROM compras WHERE id = ?id";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?id", c.Id);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+        #endregion
+
+        #region Métodos Compras Lineas
+        public void ReadComprasLineas()
+        {
+            try
+            {
+                query = "SELECT * FROM compras_lineas";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                int i = 0;
+
+                dt = new DataTable();
+                adapter.Fill(dt);
+                intAffected = dt.Rows.Count;
+
+                if (intAffected > 0)
+                    itemsComprasLineas = new CompraLinea[intAffected];
+                else
+                    itemsComprasLineas = new CompraLinea[0];
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    itemsComprasLineas[i] = new CompraLinea(Convert.ToInt32(row["compra"]), Convert.ToInt32(row["producto"]),
+                        Convert.ToInt32(row["cantidad"]), (float) Convert.ToDouble(row["precio"]));
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ErrorLeerComprasLineas" + ex.Message);
+            }
+        }
+
+        public bool InsertCompraLinea(CompraLinea c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "INSERT INTO compras_lineas VALUES(?compra, ?producto, ?cantidad, null)";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?compra", c.Compra);
+                    comando.Parameters.AddWithValue("?producto", c.Producto);
+                    comando.Parameters.AddWithValue("?cantidad", c.Cantidad);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    UIGlobal.MainWindow.ShowMessage("Ya existe una linea en esta Compra de ese producto, edita la existente.", "error");
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool EditCompraLinea(CompraLinea c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "UPDATE compras_lineas SET producto = ?producto, cantidad = ?cantidad WHERE compra = ?compra AND producto = ?producto";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?producto", c.Producto);
+                    comando.Parameters.AddWithValue("?cantidad", c.Cantidad);
+                    comando.Parameters.AddWithValue("?compra", c.Compra);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool DeleteCompraLinea(CompraLinea c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "DELETE FROM compras_lineas WHERE compra = ?compra AND producto = ?producto";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?compra", c.Compra);
+                    comando.Parameters.AddWithValue("?producto", c.Producto);
+                    comando.ExecuteNonQuery();
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+
+            CloseConnection();
+            return true;
+        }
+
+        public bool SearchCompraLinea(CompraLinea c)
+        {
+            LoadConnectionData();
+            if (OpenConnection())
+            {
+                try
+                {
+                    query = "SELECT * FROM compras_lineas WHERE compra = ?compra AND producto = ?producto";
+                    MySqlCommand comando = new MySqlCommand(query, connection);
+                    comando.Parameters.AddWithValue("?compra", c.Compra);
+                    comando.Parameters.AddWithValue("?producto", c.Producto);
+                    if (comando.ExecuteReader().HasRows)
+                    {
+                        CloseConnection();
+                        return true;
+                    }
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
+            }
+            CloseConnection();
+            return false;
         }
         #endregion
     }

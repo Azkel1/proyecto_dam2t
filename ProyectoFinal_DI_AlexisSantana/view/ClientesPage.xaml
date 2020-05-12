@@ -7,7 +7,7 @@
       xmlns:conv="clr-namespace:ProyectoFinal_DI_AlexisSantana.model"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CitasPage">
+      Title="ClientesPage">
 
     <Page.Resources>
         <CollectionViewSource x:Key="datosClientes" Source="{Binding}">
@@ -47,7 +47,7 @@
                     <TextBox Name="Cliente_Edit_ID" IsEnabled="False"/>
                     <TextBlock Text="Nombre Cliente" Style="{StaticResource expanderTag}"/>
                     <TextBox Name="Cliente_Edit_Name"/>
-                    <TextBlock Text="Fecha" Style="{StaticResource expanderTag}"/>
+                    <TextBlock Text="Dirección" Style="{StaticResource expanderTag}"/>
                     <TextBox Name="Cliente_Edit_Direccion"/>
                     <TextBlock Text="Teléfono" Style="{StaticResource expanderTag}"/>
                     <TextBox Name="Cliente_Edit_Telefono" MaxLength="12"/>

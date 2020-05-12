@@ -1,7 +1,6 @@
 ﻿using Notifications.Wpf;
 using ProyectoFinal_DI_AlexisSantana.model;
 using ProyectoFinal_DI_AlexisSantana.viewmodel;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
