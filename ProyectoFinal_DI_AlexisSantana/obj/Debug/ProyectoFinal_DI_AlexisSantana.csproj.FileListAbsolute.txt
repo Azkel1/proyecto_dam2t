@@ -107,3 +107,5 @@ G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\Pr
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\ProyectoFinal_DI_AlexisSantana.exe
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\ProyectoFinal_DI_AlexisSantana.pdb
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Debug\ProyectoFinal_DI_AlexisSantana.csprojAssemblyReference.cache
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Debug\Newtonsoft.Json.dll
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Debug\Newtonsoft.Json.xml

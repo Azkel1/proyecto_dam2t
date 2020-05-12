@@ -122,7 +122,7 @@ Section "Programa"
 ;Incluimos todos los ficheros que componen nuestra aplicaci�n
 	File  VRWorldManager.exe
 	File  VRWorldManager.exe.config
-	File  licencia.html
+  File  licencia.txt
 	File  *.txt
 	File  *.dll
 
@@ -133,7 +133,7 @@ Section "Programa"
 	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\VRWorldManager.lnk" \
                        "$INSTDIR\VRWorldManager.exe" "--parametros parametro1"
 	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\Licencia.lnk" \
-                       "$INSTDIR\licencia.html"
+                       "$INSTDIR\licencia.txt"
 
 ;Creamos tambi�n el aceso directo al instalador
 	CreateShortCut "$SMPROGRAMS\$PATH_ACCESO_DIRECTO\Desinstalar.lnk" \

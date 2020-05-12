@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using ProyectoFinal_DI_AlexisSantana.model;
 using System;
 using System.Data;
@@ -79,11 +80,13 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
          */
         private void LoadConnectionData()
         {
-            server = "localhost";
-            database = "vrworld";
-            uid = "vrworld";
-            password = "vrworld";
-            port = "3311";
+            ConData conData = JsonConvert.DeserializeObject<ConData>(System.IO.File.ReadAllText(@"dbconfig.json"));
+
+            server = conData.server;
+            database = conData.database;
+            uid = conData.uid;
+            password = conData.password;
+            port = conData.port;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" +
                                 "PORT=" + port + ";" + "UID=" + uid + ";" + "PWD=" + password +
                                 ";Convert Zero Datetime=true;CHARSET=utf8";
@@ -803,5 +806,19 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
             return false;
         }
         #endregion
+    }
+}
+
+class ConData
+{
+    public string server, database, uid, password, port;
+
+    public ConData(string server, string database, string uid, string password, string port)
+    {
+        this.server = server;
+        this.database = database;
+        this.uid = uid;
+        this.password = password;
+        this.port = port;
     }
 }
