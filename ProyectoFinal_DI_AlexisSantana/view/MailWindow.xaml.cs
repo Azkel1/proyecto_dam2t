@@ -55,9 +55,4 @@ namespace ProyectoFinal_DI_AlexisSantana.view
             this.smtp_port = smtp_port;
         } 
     }
-
-    class MailData
-    {
-
-    }
 }
