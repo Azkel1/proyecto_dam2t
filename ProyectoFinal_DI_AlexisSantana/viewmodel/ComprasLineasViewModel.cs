@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Windows.Data;
 using System.Linq;
 using System.Windows.Input;
+using System;
 
 namespace ProyectoFinal_DI_AlexisSantana.viewmodel
 {
@@ -69,6 +70,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
                 {
                     ListaComprasLineas.Add(c);
                     UIGlobal.MainWindow.statusBar.Content = "Línea añadida correctamente";
+                    ((ViewModel)UIGlobal.MainWindow.DataContext).SwitchToCompras();
                 }
             }
             else
@@ -90,6 +92,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
                     {
                         linea.Cantidad = c.Cantidad;
                     }
+                    ((ViewModel)UIGlobal.MainWindow.DataContext).SwitchToCompras();
                     UIGlobal.MainWindow.statusBar.Content = "Línea editada correctamente";
                 }
             }
@@ -101,12 +104,20 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
             
         }
 
-        public void DeleteLinea(CompraLinea c)
+        public void DeleteLinea(object param)
         {
-            if (DBConnection.Instance.DeleteCompraLinea(c))
+            CompraLinea c = null;
+
+            if (param is CompraLinea)
             {
-                ListaComprasLineas.Remove(ListaComprasLineas.Where(i => i.Compra == c.Compra && i.Producto == c.Producto).Single());
-                UIGlobal.MainWindow.statusBar.Content = "Línea eliminada correctamente";
+                c = (CompraLinea)param;
+                if (DBConnection.Instance.DeleteCompraLinea(c))
+                {
+
+                    ListaComprasLineas.Remove(ListaComprasLineas.Where(i => i.Compra == c.Compra && i.Producto == c.Producto).Single());
+                    UIGlobal.MainWindow.statusBar.Content = "Línea eliminada correctamente";
+                    ((ViewModel)UIGlobal.MainWindow.DataContext).SwitchToCompras();
+                }
             }
         }
 
@@ -138,7 +149,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
             {
                 if (buttonEliminarLinea == null)
                 {
-                    buttonEliminarLinea = new CommandPages(param => this.DeleteLinea((CompraLinea)param));
+                    buttonEliminarLinea = new CommandPages(param => this.DeleteLinea(param));
                 }
                 return buttonEliminarLinea;
             }

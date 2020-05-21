@@ -107,3 +107,8 @@ G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\Pr
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\view\ComprasPage.baml
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\view\ClientesPage.baml
 G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\view\InfoCitaWindow.baml
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Release\mailconfig.json
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Release\Newtonsoft.Json.dll
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\bin\Release\Newtonsoft.Json.xml
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\view\MailWindow.baml
+G:\DAM\Segundo\Desarrollo_Interfaces\Proyectos\ProyectoFinal_DI_AlexisSantana\ProyectoFinal_DI_AlexisSantana\obj\Release\view\MailWindow.g.cs

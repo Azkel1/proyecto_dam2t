@@ -70,8 +70,6 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
             }
         }
 
-
-
         public void MostrarInfoProducto(Producto p)
         {
             if (p == null)

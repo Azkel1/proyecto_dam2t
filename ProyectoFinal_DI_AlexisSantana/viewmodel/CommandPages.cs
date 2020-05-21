@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinal_DI_AlexisSantana.model;
+using System;
 using System.Windows.Input;
 
 namespace ProyectoFinal_DI_AlexisSantana.viewmodel
@@ -14,8 +15,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
 
         public CommandPages(Action<object> execute, Predicate<object> canExecute)
         {
-            if (execute == null)
-                throw new ArgumentNullException("execute");
+            if (execute == null) throw new ArgumentNullException("execute");
             _execute = execute;
             _canExecute = canExecute;
         }

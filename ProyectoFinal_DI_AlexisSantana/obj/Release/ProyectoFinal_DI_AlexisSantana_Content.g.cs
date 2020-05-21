@@ -9,5 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dbconfig.json")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mailconfig.json")]
 
 

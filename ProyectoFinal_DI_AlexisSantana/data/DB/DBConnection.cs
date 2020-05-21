@@ -22,7 +22,6 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
         public CompraLinea[] itemsComprasLineas;
 
         private MySqlConnection connection;
-        private string server, database, uid, password, port;
         private string connectionString;
 
         private DBConnection() { }
@@ -82,13 +81,8 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
         {
             ConData conData = JsonConvert.DeserializeObject<ConData>(System.IO.File.ReadAllText(@"dbconfig.json"));
 
-            server = conData.server;
-            database = conData.database;
-            uid = conData.uid;
-            password = conData.password;
-            port = conData.port;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" +
-                                "PORT=" + port + ";" + "UID=" + uid + ";" + "PWD=" + password +
+            connectionString = "SERVER=" + conData.server + ";" + "DATABASE=" + conData.database + ";" +
+                                "PORT=" + conData.port + ";" + "UID=" + conData.uid + ";" + "PWD=" + conData.password +
                                 ";Convert Zero Datetime=true;CHARSET=utf8";
             connection = new MySqlConnection(connectionString);
         }
@@ -103,17 +97,17 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                 connection.Open();
                 return true;
             }
-            catch (MySqlException ex)
+            catch (MySqlException e)
             {
-                switch (ex.Number)
+                switch (e.Number)
                 {
                     case 0:
                     case 1042:
-                        UIGlobal.MainWindow.ShowMessage("No se puede conectar a la BD", "error");
+                        UIGlobal.MainWindow.ShowMessage("No se puede conectar a la BD\n" + e.ToString(), "error");
                         throw new Exception("Cannot connect to server.  Contact administrator");
 
                     case 1045:
-                        UIGlobal.MainWindow.ShowMessage("Usuario/Contraseña erroneos", "error");
+                        UIGlobal.MainWindow.ShowMessage("Usuario/Contraseña erroneos\n" + e.ToString(), "error");
                         throw new Exception("Invalid username/password, please try again");
                 }
                 return false;
@@ -130,9 +124,10 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                 connection.Close();
                 return true;
             }
-            catch (MySqlException ex)
+            catch (MySqlException e)
             {
-                throw new Exception(ex.Message);
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+                throw new Exception(e.Message);
             }
         }
 
@@ -161,9 +156,10 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     i++;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw new Exception("ErrorLeerInventario" + ex.Message);
+                //throw new Exception("ErrorLeerInventario" + ex.Message);
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
             }
         }
 
@@ -183,9 +179,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?precio", i.Precio);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
-                    UIGlobal.MainWindow.ShowMessage("Ya existe un producto con ese ID", "error");
+                    UIGlobal.MainWindow.ShowMessage("Ya existe un producto con ese ID\n" + e.ToString(), "error");
                     return false;
                 }
             }
@@ -210,8 +206,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?precio", i.Precio);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -232,8 +229,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?id", i.Id);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -259,8 +257,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         return true;
                     }
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -292,9 +291,10 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         return p;
                     }
                 }
-                catch (MySqlException ex)
+                catch (MySqlException e)
                 {
-                    throw new Exception("ErrorLeerInventario" + ex.Message);
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+                    //throw new Exception("ErrorLeerInventario" + e.Message);
                 }
             }
             CloseConnection();
@@ -327,9 +327,10 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     i++;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw new Exception("ErrorLeerCitasDemos" + ex.Message);
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+                //throw new Exception("ErrorLeerCitasDemos" + e.Message);
             }
         }
 
@@ -348,9 +349,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?prod_id", c.Producto);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
-                    UIGlobal.MainWindow.ShowMessage("Ya existe una cita con ese ID", "error");
+                    UIGlobal.MainWindow.ShowMessage("Ya existe una cita con ese ID\n" + e.ToString(), "error");
                     return false;
                 }
             }
@@ -374,8 +375,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?prod_id", c.Producto);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -396,8 +398,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?id", c.Id);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -433,8 +436,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         return true;
                     }
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -468,9 +472,10 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     i++;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw new Exception("ErrorLeerClientes" + ex.Message);
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+                //throw new Exception("ErrorLeerClientes" + e.Message);
             }
         }
 
@@ -489,9 +494,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?telefono", c.Telefono);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
-                    UIGlobal.MainWindow.ShowMessage("Ya existe un cliente con ese ID", "error");
+                    UIGlobal.MainWindow.ShowMessage("Ya existe un cliente con ese ID\n" + e.ToString(), "error");
                     return false;
                 }
             }
@@ -515,8 +520,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?telefono", c.Telefono);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -542,8 +548,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         return true;
                     }
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -563,8 +570,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?id", c.Id);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -595,13 +603,14 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                 foreach (DataRow row in dt.Rows)
                 {
                     itemsCompras[i] = new Compra(Convert.ToInt32(row["id"]), Convert.ToInt32(row["cliente"]), Convert.ToInt32(row["productos"]),
-                        Convert.ToDateTime(row["fecha"]), (float)Convert.ToDouble(row["total"]));
+                        Convert.ToDateTime(row["fecha"]), row["total"] is DBNull ? 0 : (float)Convert.ToDouble(row["total"]));
                     i++;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw new Exception("ErrorLeerCompras" + ex.Message);
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+                //throw new Exception("ErrorLeerCompras" + e.Message);
             }
         }
 
@@ -619,9 +628,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?fecha", Convert.ToDateTime(c.Fecha));
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
-                    UIGlobal.MainWindow.ShowMessage("Ya existe una compra con ese ID", "error");
+                    UIGlobal.MainWindow.ShowMessage("Ya existe una compra con ese ID\n" + e.ToString(), "error");
                     return false;
                 }
             }
@@ -644,8 +653,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?fecha", Convert.ToDateTime(c.Fecha));
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -666,8 +676,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?id", c.Id);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -702,9 +713,10 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     i++;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw new Exception("ErrorLeerComprasLineas" + ex.Message);
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+                //throw new Exception("ErrorLeerComprasLineas" + e.Message);
             }
         }
 
@@ -722,9 +734,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?cantidad", c.Cantidad);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
-                    UIGlobal.MainWindow.ShowMessage("Ya existe una linea en esta Compra de ese producto, edita la existente.", "error");
+                    UIGlobal.MainWindow.ShowMessage("Ya existe una linea en esta Compra de ese producto, edita la existente.\n" + e.ToString(), "error");
                     return false;
                 }
             }
@@ -747,8 +759,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?compra", c.Compra);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -770,8 +783,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                     comando.Parameters.AddWithValue("?producto", c.Producto);
                     comando.ExecuteNonQuery();
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }
@@ -797,8 +811,9 @@ namespace ProyectoFinal_DI_AlexisSantana.data.DB
                         return true;
                     }
                 }
-                catch (MySqlException)
+                catch (MySqlException e)
                 {
+                    UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
                     return false;
                 }
             }

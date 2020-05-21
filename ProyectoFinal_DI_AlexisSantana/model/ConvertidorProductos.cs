@@ -10,21 +10,25 @@ namespace ProyectoFinal_DI_AlexisSantana.model
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            IDictionary<int?, string> products;
-
-            products = new Dictionary<int?, string>();
-
-            if (DBConnection.Instance.itemsInventario == null)
+            if (value != null)
             {
-                DBConnection.Instance.ReadInventario();
-            }
+                IDictionary<int?, string> products;
 
-            foreach (Producto i in DBConnection.Instance.itemsInventario)
-            {
-                products.Add(i.Id, i.Nombre);
-            }
+                products = new Dictionary<int?, string>();
 
-            return products[(int?)value];
+                if (DBConnection.Instance.itemsInventario == null)
+                {
+                    DBConnection.Instance.ReadInventario();
+                }
+
+                foreach (Producto i in DBConnection.Instance.itemsInventario)
+                {
+                    products.Add(i.Id, i.Nombre);
+                }
+
+                return products[(int?)value];
+            }
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

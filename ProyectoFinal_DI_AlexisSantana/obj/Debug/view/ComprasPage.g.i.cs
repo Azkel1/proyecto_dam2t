@@ -11,7 +11,6 @@
 
 using ProyectoFinal_DI_AlexisSantana.model;
 using ProyectoFinal_DI_AlexisSantana.viewmodel;
-using RootLibrary.WPF.Localization;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;

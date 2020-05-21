@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using RootLibrary.WPF.Localization;
 using SAPBusinessObjects.WPF.Viewer;
 using System;
 using System.Diagnostics;

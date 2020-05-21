@@ -1,6 +1,8 @@
 ﻿using Notifications.Wpf;
 using ProyectoFinal_DI_AlexisSantana.model;
 using ProyectoFinal_DI_AlexisSantana.viewmodel;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -33,6 +35,20 @@ namespace ProyectoFinal_DI_AlexisSantana.view
 
                 case "error":
                     MessageBox.Show(texto, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    string strPath = @"error.log";
+                    if (!File.Exists(strPath))
+                    {
+                        File.Create(strPath).Dispose();
+                    }
+                    using (StreamWriter sw = File.AppendText(strPath))
+                    {
+                        sw.WriteLine("============= Error Logging ===========");
+                        sw.WriteLine("=========== Start ============= " + DateTime.Now);
+                        sw.WriteLine("Error Message: " + texto);
+                        sw.WriteLine("Stack Trace: " + texto);
+                        sw.WriteLine("===========End============= " + DateTime.Now);
+
+                    }
                     break;
             }
         }

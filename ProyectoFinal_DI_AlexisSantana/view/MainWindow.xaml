@@ -24,7 +24,10 @@
                 <MenuItem Header="Compras" Command="{Binding ButtonCompras}"/>
             </MenuItem>
             <MenuItem Header="Informes" Command="{Binding ButtonInformes}"/>
-            <MenuItem Name ="Notificaciones" Padding="0" FontSize="14" HorizontalAlignment="Right">
+            <Button MaxWidth="24" Name="Email" Command="{Binding ButtonCorreo}" Padding="0" FontSize="14" HorizontalAlignment="Right" BorderBrush="Transparent" Background="Transparent">
+                <Image Source="/ProyectoFinal_DI_AlexisSantana;component/data/media/icons8-composing-mail-100.png" />
+            </Button>
+            <MenuItem Name="Notificaciones" Padding="0" MaxWidth="24" HorizontalAlignment="Right">
                 <MenuItem.Icon>
                     <Image Source="/ProyectoFinal_DI_AlexisSantana;component/data/media/icons8-bell-100.png" Margin="-8"/>
                 </MenuItem.Icon>

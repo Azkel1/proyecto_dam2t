@@ -1,5 +1,6 @@
 ﻿using ProyectoFinal_DI_AlexisSantana.model;
 using ProyectoFinal_DI_AlexisSantana.view;
+using System;
 using System.Windows.Input;
 
 namespace ProyectoFinal_DI_AlexisSantana.viewmodel
@@ -8,7 +9,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
     {
         public ViewModel() { }
 
-        private ICommand buttonInventario, buttonCitas, buttonClientes, buttonCompras, buttonInfo, buttonSalir, buttonInformes, buttonInfoCita;
+        private ICommand buttonInventario, buttonCitas, buttonClientes, buttonCompras, buttonInfo, buttonSalir, buttonInformes, buttonInfoCita, buttonCorreo;
 
         #region Comandos
         public ICommand ButtonInventario
@@ -106,6 +107,18 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
                 return buttonInfoCita;
             }
         }
+
+        public ICommand ButtonCorreo
+        {
+            get
+            {
+                if (buttonCorreo == null)
+                {
+                    buttonCorreo = new CommandPages(param => this.MostrarCorreo());
+                }
+                return buttonCorreo;
+            }
+        }
         #endregion
 
         #region Metodos
@@ -133,7 +146,7 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
             UIGlobal.MainWindow.statusBar.Content = "Items de Clientes";
         }
 
-        private void SwitchToCompras()
+        public void SwitchToCompras()
         {
             ComprasPage comprasPage = new ComprasPage();
             UIGlobal.MainWindow.dataFrame.Navigate(comprasPage);
@@ -151,19 +164,43 @@ namespace ProyectoFinal_DI_AlexisSantana.viewmodel
 
         private void MostrarInfo()
         {
-            UIGlobal.MainWindow.ShowMessage("Aplicación para la gestión del inventario y de las citas con clientes de VRWorld.", "info");
+            try
+            {
+                UIGlobal.MainWindow.ShowMessage("Aplicación para la gestión del inventario y de las citas con clientes de VRWorld.", "info");
+            } catch (Exception e)
+            {
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
+            }
         }
 
         public void MostrarInfoCita(Cita c)
         {
-            if (c == null)
+            try
             {
-                UIGlobal.MainWindow.ShowMessage("Error al obtener la información de la cita.", "error");
+                if (c == null)
+                {
+                    UIGlobal.MainWindow.ShowMessage("Error al obtener la información de la cita.", "error");
+                }
+                else
+                {
+                    InfoCitaWindow ventana = new InfoCitaWindow(c);
+                    ventana.ShowDialog();
+                }
+            } catch (Exception e)
+            {
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
             }
-            else
+        }
+
+        public void MostrarCorreo()
+        {
+            try
             {
-                InfoCitaWindow ventana = new InfoCitaWindow(c);
-                ventana.ShowDialog();
+                MailWindow mailWindow = new MailWindow();
+                mailWindow.ShowDialog();
+            } catch (Exception e)
+            {
+                UIGlobal.MainWindow.ShowMessage(e.ToString(), "error");
             }
         }
 
