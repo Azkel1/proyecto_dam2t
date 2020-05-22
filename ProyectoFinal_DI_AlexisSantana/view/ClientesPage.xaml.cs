@@ -86,7 +86,7 @@ namespace ProyectoFinal_DI_AlexisSantana.view
 
         private void DeleteCliente(object o, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Seguro que quiere eliminar esta cita?", "Aviso", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("¿Seguro que quiere eliminar este cliente?", "Aviso", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 int? id = Convert.ToInt32(Cliente_Edit_ID.Text);
                 clvm.DeleteCliente(new Cliente(id));

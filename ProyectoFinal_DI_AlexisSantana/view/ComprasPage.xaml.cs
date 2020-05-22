@@ -136,7 +136,7 @@ namespace ProyectoFinal_DI_AlexisSantana.view
 
         private void DeleteCompra(object o, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Seguro que quiere eliminar esta cita?", "Aviso", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("¿Seguro que quiere eliminar esta compra?", "Aviso", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 int? id = Convert.ToInt32(Compra_Edit_ID.Text);
                 cpvm.DeleteCompra(new Compra(id));

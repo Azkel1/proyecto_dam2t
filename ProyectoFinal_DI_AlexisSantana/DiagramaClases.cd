@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Páginas">
+    <Position X="0.529" Y="2.743" Height="0.435" Width="1.513" />
+  </Comment>
+  <Comment CommentText="Viewmodel">
+    <Position X="2.284" Y="2.747" Height="0.435" Width="1.513" />
+  </Comment>
+  <Comment CommentText="Comandos">
+    <Position X="4.048" Y="2.742" Height="0.435" Width="1.513" />
+  </Comment>
+  <Comment CommentText="Ventanas">
+    <Position X="5.821" Y="2.746" Height="0.435" Width="1.428" />
+  </Comment>
+  <Comment CommentText="Tests Unitarios">
+    <Position X="7.528" Y="2.74" Height="0.435" Width="1.513" />
+  </Comment>
+  <Comment CommentText="Reportes">
+    <Position X="9.273" Y="2.735" Height="0.435" Width="1.513" />
+  </Comment>
+  <Comment CommentText="Convertidores">
+    <Position X="10.99" Y="2.739" Height="0.435" Width="1.513" />
+  </Comment>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.data.DB.DBConnection" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMANSAmAAIAQACgBCEIZABRIISgAhAIAQKSMgAAAAAA=</HashCode>
+      <FileName>data\DB\DBConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.informes.CitasPorProducto" Collapsed="true">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAABJAAAQAAAAAAAIAAAAAAAAAAAADAABAAAABAA=</HashCode>
+      <FileName>informes\CitasPorProducto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.Cita" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQBAAAEAQAAAAAAAAAAAAAAAEAAQABAAEhA=</HashCode>
+      <FileName>model\Cita.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.Cliente" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAQAgAAEhI=</HashCode>
+      <FileName>model\Cliente.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.Compra" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQBAAAEAQACAAAAAgAAAQAAAAEAAAAAAAhA=</HashCode>
+      <FileName>model\Compra.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.CompraLinea" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAAABAAAAAQAAAAAAQAAAAEAQAAAAEAAAAABA=</HashCode>
+      <FileName>model\CompraLinea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.ConvertidorClientes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>model\ConvertidorClientes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.ConvertidorProductos" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>model\ConvertidorProductos.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.NotifyBase" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>model\NotifyBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.Producto" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAEAAAAAAACAAAEAgAARAAAAEAAAAAAAAAAAAhA=</HashCode>
+      <FileName>model\Producto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.model.UIGlobal" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAAIAAAAAAAAAEAAAAAAEAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>model\UIGlobal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.pruebas.TestsInventario" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAQAAAAgAAAAAAAACAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>pruebas\TestsInventario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.CitasPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAABAAAAAAAAABIAAAAAAAAAAAEAAAAAAAAABAg=</HashCode>
+      <FileName>view\CitasPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.ClientesPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABQAAAAAAAABAAAAAAIAAAAAEAACEAAAAAAAA=</HashCode>
+      <FileName>view\ClientesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.ComprasPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgBgAAQAAAAAFAAAAACAAEAAAEAAAAAAAAAEAA=</HashCode>
+      <FileName>view\ComprasPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.InfoCitaWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>view\InfoCitaWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.InfoProductoWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>view\InfoProductoWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.InformesPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>view\InformesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.InventarioPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBAAAAAAAAABAAAAAAAAEABAEAAAAAAAAAIAA=</HashCode>
+      <FileName>view\InventarioPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.MailWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>view\MailWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.view.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAggAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>view\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.CitasViewModel" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAACAAAAAAAAAQAAIAEAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>viewmodel\CitasViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.ClientesViewModel" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAQBAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>viewmodel\ClientesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.CommandBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAACBAAAAAAAAAAAA=</HashCode>
+      <FileName>viewmodel\CommandBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.CommandPages" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>viewmodel\CommandPages.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.219" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.ComprasLineasViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEACIABAAAAAgAAAIABAACwBAAAAAQA=</HashCode>
+      <FileName>viewmodel\ComprasLineasViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.ComprasViewModel" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAgAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>viewmodel\ComprasViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.ProductoViewModel" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACCgAAAAAAAAAAAACAAAAAFABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>viewmodel\ProductoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProyectoFinal_DI_AlexisSantana.viewmodel.ViewModel" Collapsed="true">
+    <Position X="2.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABgAARgYAAAAABIASAACAEEACABBARoAQAIAAEEQAA=</HashCode>
+      <FileName>viewmodel\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
